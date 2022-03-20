@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 import random
 import json
 
+# For the request to get questions
 class QuestionView(View):
     
     @method_decorator(csrf_exempt)
@@ -30,6 +31,7 @@ class QuestionView(View):
                 datos = {'message':"Questions not found..."}
             return JsonResponse(datos)
 
+# For the request to get random questions
 class RandomQuestionView(View):
     
     @method_decorator(csrf_exempt)
@@ -46,6 +48,7 @@ class RandomQuestionView(View):
             datos = {'message':"question not found..."}
         return JsonResponse(datos)
 
+# For the request to get answers for an specific question
 class AnswerView(View):
 
     @method_decorator(csrf_exempt)
