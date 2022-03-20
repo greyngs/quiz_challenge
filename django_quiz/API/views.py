@@ -38,8 +38,8 @@ class RandomQuestionView(View):
 
     def get(self, request, level=0):
         questions = list(Question.objects.filter(level=level).values())
-        r = random.randint(0, len(questions)-1)
         if len(questions) > 0:
+            r = random.randint(0, len(questions)-1)
             question = questions[r]
             datos = {'message':"Success", 'question':question}
         else:
@@ -57,5 +57,5 @@ class AnswerView(View):
         if len(answers) > 0:
             datos = {'message':"Success", 'answers':answers}
         else:
-            datos = {'message':"question not found..."}
+            datos = {'message':"answers not found..."}
         return JsonResponse(datos)
