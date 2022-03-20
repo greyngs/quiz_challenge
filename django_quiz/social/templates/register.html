@@ -2,9 +2,14 @@
 {% block title %}Register{% endblock %}
 
 {% block content %}
-    <form class="form" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" id="submit">Register</button>
-    </form>
+<div class="card text-start">
+    <div class="card-body">
+        <h2 class="card-title">Register</h2>
+        <form class="form" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" id="submit" class="btn btn-success">Register</button>
+        </form>
+    </div>
+</div>  
 {% endblock content %}

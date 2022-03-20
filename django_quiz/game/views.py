@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from API.models import Question, Answer, History
+from django.contrib import messages
 import random
 
 def game(request, level=0):
-
     questions = list(Question.objects.filter(level=level).values())
     if len(questions) > 0:
         r = random.randint(0, len(questions)-1)
@@ -27,6 +27,7 @@ def step(request):
     if answer.state == True:
         if level == 5:
             record(level, request.user)
+            messages.success(request, f'Congratulations!! {request.user.username} your won : {level * 1000} Dogecoins!!')
             return redirect('/')
         else:
             return redirect('/game/'+str(level+1))
@@ -40,5 +41,11 @@ def record(level, user):
     )
 
 def retire(request, level):
-    record(level, request.user)
+    score = level -1
+    record(score, request.user)
+    messages.success(request, f'{request.user.username} your score is saved : {score} Dogecoins!! - Play again ;)')
+    return redirect('/')
+
+def failTime(request):
+    messages.success(request, f'{request.user.username} your time expired, you won : 0 Dogecoins!! - Play again ;)')
     return redirect('/')

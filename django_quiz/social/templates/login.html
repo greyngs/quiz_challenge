@@ -2,9 +2,14 @@
 {% block title %}Register{% endblock %}
 
 {% block content %}
-    <form class="form" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" id="submit">Login</button>
-    </form>
+<div class="card">
+    <div class="card-body">
+        <form class="form" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}            
+            <button type="submit" id="submit" class="btn btn-success">Login</button>
+        </form>
+        <a href="{% url 'register_process' %}">Create an account</a>
+    </div>
+</div>
 {% endblock content %}

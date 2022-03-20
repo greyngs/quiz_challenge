@@ -6,12 +6,13 @@
     <p>Remember that you have 1 minute to answer each question</p>
 
     {% if user.is_authenticated %}
+        <p>Good Luck! {{user.username}}</p>
         <a href="game/1">  
-            <button>Start Quiz</button>  
+            <button class="btn btn-success btn-block text-white">Start Quiz</button>  
         </a>
     {% else %}
         <a href="{% url 'login_process' %}">
-            <button>Start Quiz</button>  
+            <button class="btn btn-success btn-block text-white">Start Quiz</button>  
         </a>
     {% endif %}
 {% endblock content %}
